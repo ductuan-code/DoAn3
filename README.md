@@ -55,7 +55,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ## Công nghệ sử dụng
 - Frontend: HTML, CSS, JavaScript  
-- Backend: (Công nghệ bạn sử dụng)  
+- Backend: .NET 
 - Database: SQL Server / MySQL  
 
 ---
