@@ -1,6 +1,6 @@
-# ⚽ HỆ THỐNG WEBSITE ĐẶT LỊCH VÀ QUẢN LÝ SÂN BÓNG
+# HỆ THỐNG WEBSITE ĐẶT LỊCH VÀ QUẢN LÝ SÂN BÓNG
 
-## 📌 Giới thiệu
+## Giới thiệu
 Đây là hệ thống website cho phép người dùng tìm kiếm, xem lịch trống và đặt sân bóng đá trực tuyến.  
 Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động kinh doanh và hỗ trợ quản trị viên quản lý toàn bộ dữ liệu trên hệ thống.
 
@@ -8,7 +8,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## 🎯 Mục tiêu của hệ thống
+## Mục tiêu của hệ thống
 - Xây dựng nền tảng đặt sân bóng trực tuyến  
 - Hỗ trợ quản lý lịch đặt sân hiệu quả  
 - Quản lý thông tin người dùng và sân bóng  
@@ -16,9 +16,9 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## 👥 Đối tượng sử dụng
+## Đối tượng sử dụng
 
-### 👤 Người dùng
+### Người dùng
 - Đăng ký và đăng nhập tài khoản  
 - Xem danh sách và thông tin chi tiết sân bóng  
 - Xem lịch trống theo ngày và khung giờ  
@@ -26,7 +26,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 - Hủy lịch đặt  
 - Xem lịch sử đặt sân  
 
-### 🛠️ Quản trị viên
+### Quản trị viên
 - Thêm, sửa, xoá thông tin sân bóng  
 - Quản lý tài khoản người dùng  
 - Quản lý lịch đặt sân  
@@ -34,7 +34,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## ⚙️ Chức năng chính
+## Chức năng chính
 - Xác thực và phân quyền người dùng  
 - Quản lý thông tin sân bóng  
 - Quản lý đặt sân theo khung giờ  
@@ -44,7 +44,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## 🗄️ Thiết kế cơ sở dữ liệu (cơ bản)
+## Thiết kế cơ sở dữ liệu (cơ bản)
 - Users  
 - Roles  
 - FootballFields  
@@ -53,14 +53,14 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## 🛠️ Công nghệ sử dụng
+## Công nghệ sử dụng
 - Frontend: HTML, CSS, JavaScript  
 - Backend: (Công nghệ bạn sử dụng)  
 - Database: SQL Server / MySQL  
 
 ---
 
-## 🚀 Hướng phát triển trong tương lai
+## Hướng phát triển trong tương lai
 - Tích hợp thanh toán trực tuyến  
 - Gửi thông báo email khi đặt sân  
 - Tìm kiếm sân theo vị trí trên bản đồ  
@@ -69,7 +69,7 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 
 ---
 
-## 👨‍💻 Thông tin sinh viên thực hiện
+## Thông tin sinh viên thực hiện
 - Họ tên: Nguyễn Đức Tuấn  
 - Ngành học: Công nghệ Web  
 - Môn học: Lập trình Web
