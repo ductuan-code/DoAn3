@@ -17,7 +17,15 @@ Hệ thống giúp chủ sân quản lý lịch đặt, theo dõi hoạt động
 ---
 
 ## Đối tượng sử dụng
+### Chủ sân
 
+- Đăng ký tài khoản chủ sân
+- Thêm mới và cập nhật thông tin sân bóng
+- Thiết lập khung giờ hoạt động cho sân
+- Cấu hình giá thuê theo từng khung giờ
+- Theo dõi danh sách lịch đặt sân
+- Xem thống kê số lượt đặt và doanh thu của sân
+- Tạm ngưng hoặc mở lại hoạt động của sân
 ### Người dùng
 - Đăng ký và đăng nhập tài khoản  
 - Xem danh sách và thông tin chi tiết sân bóng  
