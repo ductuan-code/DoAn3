@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# HỆ THỐNG WEBSITE ĐẶT LỊCH VÀ QUẢN LÝ SÂN BÓNG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Giới thiệu
+Hệ thống website đặt lịch và quản lý sân bóng được xây dựng nhằm hỗ trợ người dùng tìm kiếm, xem lịch trống và đặt sân bóng đá trực tuyến một cách nhanh chóng và thuận tiện.
+Bên cạnh đó, hệ thống còn giúp chủ sân quản lý lịch đặt, theo dõi hoạt động kinh doanh và hỗ trợ quản trị viên giám sát toàn bộ dữ liệu cũng như hoạt động của hệ thống.
+Đề tài được thực hiện nhằm áp dụng các kiến thức về phát triển ứng dụng web fullstack, thiết kế cơ sở dữ liệu và xây dựng hệ thống quản lý dịch vụ thực tế.
 
-## Available Scripts
+## Mục tiêu của hệ thống
+- Xây dựng nền tảng đặt sân bóng trực tuyến  
+- Hỗ trợ quản lý lịch đặt sân hiệu quả  
+- Quản lý thông tin người dùng và sân bóng  
+- Thống kê và theo dõi hoạt động sử dụng sân  
 
-In the project directory, you can run:
+## Các vai trò trong hệ thống
+### Người dùng
+- Đăng ký và đăng nhập tài khoản  
+- Xem danh sách và thông tin chi tiết sân bóng  
+- Xem lịch trống theo ngày và khung giờ  
+- Đặt lịch sử dụng sân  
+- Hủy lịch đặt  
+- Xem lịch sử đặt sân  
+### Chủ sân
+- Đăng ký tài khoản chủ sân  
+- Thêm mới và cập nhật thông tin sân bóng  
+- Thiết lập khung giờ hoạt động  
+- Cấu hình giá thuê theo từng khung giờ  
+- Theo dõi danh sách lịch đặt sân  
+- Xem thống kê lượt đặt và doanh thu  
+- Tạm ngưng hoặc kích hoạt lại sân  
+### Quản trị viên
+- Quản lý thông tin sân bóng  
+- Quản lý tài khoản người dùng và chủ sân  
+- Quản lý lịch đặt sân  
+- Theo dõi và thống kê hoạt động toàn hệ thống  
 
-### `npm start`
+## Chức năng chính
+- Xác thực và phân quyền người dùng  
+- Quản lý thông tin sân bóng  
+- Quản lý đặt sân theo khung giờ  
+- Kiểm tra và xử lý trùng lịch đặt sân  
+- Thống kê và báo cáo hoạt động  
+- Giao diện thân thiện, hỗ trợ nhiều thiết bị  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Thiết kế cơ sở dữ liệu (dự kiến)
+- Users  
+- Roles  
+- Owners  
+- FootballFields  
+- TimeSlots  
+- Bookings  
+- Payments  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Công nghệ sử dụng
+- Frontend: HTML, CSS, JavaScript  
+- Backend: ASP.NET  
+- Database: SQL Server  
 
-### `npm test`
+## Hướng phát triển trong tương lai
+- Tích hợp thanh toán trực tuyến  
+- Gửi thông báo email khi đặt sân  
+- Tìm kiếm sân theo vị trí bản đồ  
+- Hệ thống đánh giá và nhận xét sân  
+- Phát triển ứng dụng di động  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Thông tin sinh viên thực hiện
+- Họ tên: Nguyễn Đức Tuấn  
+- Ngành học: Công nghệ Web  
+- Môn học: Lập trình Web  
