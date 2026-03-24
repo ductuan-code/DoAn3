@@ -1,41 +1,26 @@
-import { Layout, Menu } from "antd";
-
-const { Header, Sider, Content } = Layout;
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import HomePage from './pages/HomePage';
+import FieldListPage from './pages/FieldListPage';
+import FieldDetailPage from './pages/FieldDetailPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import MyBookingsPage from './pages/MyBookingsPage';
 
 function App() {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      
-      {/* Sidebar */}
-      <Sider>
-        <div style={{ color: "white", padding: 20, fontSize: 18 }}>
-          Football
-        </div>
-
-        <Menu
-          theme="dark"
-          mode="inline"
-          items={[
-            { key: "1", label: "Trang chủ" },
-            { key: "2", label: "Danh sách sân" },
-            { key: "3", label: "Đặt sân" },
-            { key: "4", label: "Quản trị" },
-          ]}
-        />
-      </Sider>
-
-      {/* Main */}
-      <Layout>
-        <Header style={{ background: "#fff", paddingLeft: 20 }}>
-          Football Booking System
-        </Header>
-
-        <Content style={{ margin: 20 }}>
-          Nội dung sẽ hiển thị ở đây
-        </Content>
-      </Layout>
-
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="fields" element={<FieldListPage />} />
+          <Route path="fields/:id" element={<FieldDetailPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="my-bookings" element={<MyBookingsPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
