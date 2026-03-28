@@ -50,11 +50,25 @@ export const mockFields: FootballField[] = [
 ];
 
 export const mockTimeSlots: TimeSlot[] = [
-  // Sân 1
-  { id: 'ts1', fieldId: '1', date: '2026-03-25', startTime: '06:00', endTime: '07:00', price: 300000, status: 'available' },
-  { id: 'ts2', fieldId: '1', date: '2026-03-25', startTime: '07:00', endTime: '08:00', price: 300000, status: 'booked' },
-  { id: 'ts3', fieldId: '1', date: '2026-03-25', startTime: '17:00', endTime: '18:00', price: 400000, status: 'available' },
-  { id: 'ts4', fieldId: '1', date: '2026-03-25', startTime: '18:00', endTime: '19:00', price: 400000, status: 'available' },
+  // Sân 1 - Ngày 25/03/2026
+  { id: 'ts1-1', fieldId: '1', date: '2026-03-25', startTime: '06:00', endTime: '07:00', price: 300000, status: 'available' },
+  { id: 'ts1-2', fieldId: '1', date: '2026-03-25', startTime: '07:00', endTime: '08:00', price: 300000, status: 'available' },
+  { id: 'ts1-3', fieldId: '1', date: '2026-03-25', startTime: '08:00', endTime: '09:00', price: 350000, status: 'available' },
+  { id: 'ts1-4', fieldId: '1', date: '2026-03-25', startTime: '09:00', endTime: '10:00', price: 350000, status: 'booked' },
+  { id: 'ts1-5', fieldId: '1', date: '2026-03-25', startTime: '10:00', endTime: '11:00', price: 350000, status: 'available' },
+  { id: 'ts1-6', fieldId: '1', date: '2026-03-25', startTime: '17:00', endTime: '18:00', price: 400000, status: 'available' },
+  { id: 'ts1-7', fieldId: '1', date: '2026-03-25', startTime: '18:00', endTime: '19:00', price: 400000, status: 'available' },
+  { id: 'ts1-8', fieldId: '1', date: '2026-03-25', startTime: '19:00', endTime: '20:00', price: 450000, status: 'available' },
+  { id: 'ts1-9', fieldId: '1', date: '2026-03-25', startTime: '20:00', endTime: '21:00', price: 450000, status: 'available' },
+  
+  // Sân 2
+  { id: 'ts2-1', fieldId: '2', date: '2026-03-25', startTime: '06:00', endTime: '07:00', price: 500000, status: 'available' },
+  { id: 'ts2-2', fieldId: '2', date: '2026-03-25', startTime: '07:00', endTime: '08:00', price: 500000, status: 'available' },
+  { id: 'ts2-3', fieldId: '2', date: '2026-03-25', startTime: '17:00', endTime: '18:00', price: 600000, status: 'available' },
+  
+  // Sân 3
+  { id: 'ts3-1', fieldId: '3', date: '2026-03-25', startTime: '06:00', endTime: '07:00', price: 250000, status: 'available' },
+  { id: 'ts3-2', fieldId: '3', date: '2026-03-25', startTime: '07:00', endTime: '08:00', price: 250000, status: 'available' },
 ];
 
 export const mockBookings: Booking[] = [

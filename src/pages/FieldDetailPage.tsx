@@ -1,62 +1,93 @@
-import { useParams } from 'react-router-dom';
-import { Card, Row, Col, Typography, Tag, Button, Table, message } from 'antd';
+import { useParams, useNavigate } from 'react-router-dom';
+import { Row, Col, Typography, Tag, Button, message } from 'antd';
 import { mockFields, mockTimeSlots } from '../data/mockData';
 import { useState } from 'react';
+import TimeSlotTable from '../components/TimeSlotTable';
+import BookingModal from '../components/BookingModal';
+import { Booking } from '../types';
+import { useAuth } from '../contexts/AuthContext';
+import { useBooking } from '../contexts/BookingContext';
+import { useBookingSelection } from '../hooks/useBookingSelection';
 
 const { Title, Text } = Typography;
 
 export default function FieldDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+  const { bookings, addBooking } = useBooking();
+  const [modalVisible, setModalVisible] = useState(false);
+  
+  // Custom hook quản lý booking selection
+  const {
+    selectedSlots,
+    totalPrice,
+    isSlotSelected,
+    isSlotDisabled,
+    toggleSlot,
+    clearSelection,
+    hasSelection
+  } = useBookingSelection();
+
   const field = mockFields.find(f => f.id === id);
-  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
 
   if (!field) {
     return <div>Không tìm thấy sân bóng</div>;
   }
 
   const timeSlots = mockTimeSlots.filter(ts => ts.fieldId === id);
+  
+  // Lấy danh sách slot đã được đặt
+  const bookedSlotIds = bookings
+    .filter(b => b.fieldId === id && b.status !== 'cancelled')
+    .map(b => b.timeSlotId);
 
-  const columns = [
-    {
-      title: 'Giờ',
-      dataIndex: 'startTime',
-      key: 'time',
-      render: (_: any, record: any) => `${record.startTime} - ${record.endTime}`
-    },
-    {
-      title: 'Giá',
-      dataIndex: 'price',
-      key: 'price',
-      render: (price: number) => `${price.toLocaleString('vi-VN')} đ`
-    },
-    {
-      title: 'Trạng thái',
-      dataIndex: 'status',
-      key: 'status',
-      render: (status: string) => (
-        <Tag color={status === 'available' ? 'green' : 'red'}>
-          {status === 'available' ? 'Còn trống' : 'Đã đặt'}
-        </Tag>
-      )
-    },
-    {
-      title: 'Hành động',
-      key: 'action',
-      render: (_: any, record: any) => (
-        <Button 
-          type="primary"
-          disabled={record.status !== 'available'}
-          onClick={() => handleBooking(record.id)}
-        >
-          Đặt sân
-        </Button>
-      )
+  // Mở modal xác nhận
+  const handleOpenModal = () => {
+    if (!hasSelection) {
+      message.warning('Vui lòng chọn ít nhất 1 khung giờ!');
+      return;
     }
-  ];
 
-  const handleBooking = (slotId: string) => {
-    setSelectedSlot(slotId);
-    message.success('Đặt sân thành công! (Demo)');
+    if (!isAuthenticated) {
+      message.warning('Vui lòng đăng nhập để đặt sân!');
+      navigate('/login');
+      return;
+    }
+
+    setModalVisible(true);
+  };
+
+  // Xác nhận booking
+  const handleConfirmBooking = () => {
+    if (!user) return;
+
+    // Tạo booking cho từng slot
+    selectedSlots.forEach(slot => {
+      const newBooking: Booking = {
+        id: 'booking-' + Date.now() + '-' + slot.id,
+        userId: user.id,
+        fieldId: field.id,
+        timeSlotId: slot.id,
+        date: slot.date,
+        startTime: slot.startTime,
+        endTime: slot.endTime,
+        totalPrice: slot.price,
+        status: 'confirmed',
+        createdAt: new Date().toISOString(),
+        fieldName: field.name
+      };
+      
+      addBooking(newBooking);
+    });
+
+    // Reset state
+    clearSelection();
+    setModalVisible(false);
+  };
+
+  const handleCloseModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -99,14 +130,44 @@ export default function FieldDetailPage() {
       </Row>
 
       <div style={{ marginTop: 40 }}>
-        <Title level={3}>Lịch Trống - Ngày 25/03/2026</Title>
-        <Table 
-          dataSource={timeSlots}
-          columns={columns}
-          rowKey="id"
-          pagination={false}
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          marginBottom: 16 
+        }}>
+          <Title level={3} style={{ margin: 0 }}>
+            Lịch Trống - Ngày 25/03/2026
+          </Title>
+          
+          {hasSelection && (
+            <Button 
+              type="primary" 
+              size="large"
+              onClick={handleOpenModal}
+            >
+              Đặt sân ({selectedSlots.length} khung giờ)
+            </Button>
+          )}
+        </div>
+
+        <TimeSlotTable 
+          timeSlots={timeSlots}
+          selectedSlots={selectedSlots}
+          bookedSlotIds={bookedSlotIds}
+          isSlotSelected={isSlotSelected}
+          isSlotDisabled={isSlotDisabled}
+          onSelectSlot={toggleSlot}
         />
       </div>
+
+      <BookingModal
+        visible={modalVisible}
+        onClose={handleCloseModal}
+        timeSlots={selectedSlots}
+        field={field}
+        onConfirm={handleConfirmBooking}
+      />
     </div>
   );
 }

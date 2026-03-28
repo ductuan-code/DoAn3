@@ -1,16 +1,39 @@
-import { Table, Tag, Button, Typography, message } from 'antd';
-import { mockBookings } from '../data/mockData';
-import { useState } from 'react';
+import { Table, Tag, Button, Typography, message, Empty } from 'antd';
+import { useAuth } from '../contexts/AuthContext';
+import { useBooking } from '../contexts/BookingContext';
+import { useNavigate } from 'react-router-dom';
 
 const { Title } = Typography;
 
 export default function MyBookingsPage() {
-  const [bookings, setBookings] = useState(mockBookings);
+  const { user, isAuthenticated } = useAuth();
+  const { bookings, cancelBooking } = useBooking();
+  const navigate = useNavigate();
+
+  // Nếu chưa đăng nhập
+  if (!isAuthenticated) {
+    return (
+      <div style={{ textAlign: 'center', padding: 60 }}>
+        <Empty 
+          description="Vui lòng đăng nhập để xem lịch đặt sân"
+        />
+        <Button 
+          type="primary" 
+          size="large"
+          onClick={() => navigate('/login')}
+          style={{ marginTop: 16 }}
+        >
+          Đăng nhập
+        </Button>
+      </div>
+    );
+  }
+
+  // Lấy bookings của user hiện tại
+  const userBookings = bookings.filter(b => b.userId === user?.id);
 
   const handleCancel = (bookingId: string) => {
-    setBookings(bookings.map(b => 
-      b.id === bookingId ? { ...b, status: 'cancelled' as const } : b
-    ));
+    cancelBooking(bookingId);
     message.success('Đã hủy lịch đặt sân');
   };
 
@@ -24,6 +47,7 @@ export default function MyBookingsPage() {
       title: 'Ngày',
       dataIndex: 'date',
       key: 'date',
+      render: (date: string) => new Date(date).toLocaleDateString('vi-VN')
     },
     {
       title: 'Giờ',
@@ -75,11 +99,19 @@ export default function MyBookingsPage() {
   return (
     <div>
       <Title level={2}>Lịch Đặt Sân Của Tôi</Title>
-      <Table 
-        dataSource={bookings}
-        columns={columns}
-        rowKey="id"
-      />
+      
+      {userBookings.length === 0 ? (
+        <Empty 
+          description="Bạn chưa có lịch đặt sân nào"
+          style={{ marginTop: 60 }}
+        />
+      ) : (
+        <Table 
+          dataSource={userBookings}
+          columns={columns}
+          rowKey="id"
+        />
+      )}
     </div>
   );
 }

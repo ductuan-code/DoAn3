@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Highlight selected time slot row */
+.selected-row {
+  background-color: #e6f7ff !important;
+}
+
+.selected-row:hover {
+  background-color: #bae7ff !important;
+}
