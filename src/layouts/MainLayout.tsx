@@ -8,7 +8,8 @@ import {
   UserAddOutlined,
   UserOutlined,
   LogoutOutlined,
-  BellOutlined
+  BellOutlined,
+  DashboardOutlined
 } from '@ant-design/icons';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -17,7 +18,7 @@ const { Header, Content, Footer } = Layout;
 export default function MainLayout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, isAdmin, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -36,6 +37,17 @@ export default function MainLayout() {
       label: 'Lịch đặt của tôi',
       onClick: () => navigate('/my-bookings')
     },
+    ...(isAdmin ? [
+      {
+        type: 'divider' as const,
+      },
+      {
+        key: 'admin',
+        icon: <DashboardOutlined />,
+        label: 'Admin Panel',
+        onClick: () => navigate('/admin')
+      }
+    ] : []),
     {
       type: 'divider' as const,
     },
@@ -144,7 +156,9 @@ export default function MainLayout() {
                     width: 32,
                     height: 32,
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                    background: isAdmin 
+                      ? 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'
+                      : 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -153,7 +167,14 @@ export default function MainLayout() {
                   }}>
                     {user.name.charAt(0).toUpperCase()}
                   </div>
-                  <span>{user.name}</span>
+                  <div>
+                    <div>{user.name}</div>
+                    {isAdmin && (
+                      <div style={{ fontSize: 11, color: '#ef4444', fontWeight: 600 }}>
+                        ADMIN
+                      </div>
+                    )}
+                  </div>
                 </Button>
               </Dropdown>
             </>
