@@ -168,6 +168,27 @@ export default function LoginPage() {
               />
             </Form.Item>
 
+            {/* Hint */}
+            <div style={{ 
+              marginTop: -16,
+              marginBottom: 16,
+              padding: 12,
+              background: '#f0fdf4',
+              border: '1px solid #86efac',
+              borderRadius: 8,
+              fontSize: 13
+            }}>
+              <div style={{ fontWeight: 600, color: '#16a34a', marginBottom: 4 }}>
+                💡 Gợi ý đăng nhập:
+              </div>
+              <div style={{ color: '#15803d' }}>
+                • <strong>admin@footballpro.com</strong> - Đăng nhập với quyền Admin<br/>
+                • <strong>owner@test.com</strong> - Đăng nhập với quyền Owner<br/>
+                • <strong>user@test.com</strong> - Đăng nhập với quyền User<br/>
+                • Mật khẩu: <strong>bất kỳ</strong>
+              </div>
+            </div>
+
             <Form.Item
               label="Mật khẩu"
               name="password"
