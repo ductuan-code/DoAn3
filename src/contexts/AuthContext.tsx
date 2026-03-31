@@ -6,6 +6,8 @@ interface AuthContextType {
   login: (email: string, password: string) => void;
   logout: () => void;
   isAuthenticated: boolean;
+  isAdmin: boolean;
+  isOwner: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -22,13 +24,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = (email: string, password: string) => {
-    // Mock login - trong thực tế sẽ gọi API
+    // Phân quyền dựa trên email
+    let role: 'user' | 'owner' | 'admin' = 'user';
+    
+    if (email.includes('admin@') || email === 'admin@footballpro.com') {
+      role = 'admin';
+    } else if (email.includes('owner@')) {
+      role = 'owner';
+    }
+
     const mockUser: User = {
       id: 'user-' + Date.now(),
       email,
       name: email.split('@')[0],
       phone: '0123456789',
-      role: 'user'
+      role
     };
     
     setUser(mockUser);
@@ -40,12 +50,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem('currentUser');
   };
 
+  const isAdmin = user?.role === 'admin';
+  const isOwner = user?.role === 'owner';
+
   return (
     <AuthContext.Provider value={{ 
       user, 
       login, 
       logout, 
-      isAuthenticated: !!user 
+      isAuthenticated: !!user,
+      isAdmin,
+      isOwner
     }}>
       {children}
     </AuthContext.Provider>
