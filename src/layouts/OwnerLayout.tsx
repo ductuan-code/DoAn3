@@ -8,12 +8,23 @@ import {
   HomeOutlined,
   LogoutOutlined
 } from '@ant-design/icons';
+import { useAuth } from '../contexts/AuthContext';
 
 const { Header, Sider, Content } = Layout;
 
 export default function OwnerLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { logout } = useAuth();
+
+  const handleMenuClick = (key: string) => {
+    if (key === 'logout') {
+      logout();
+      navigate('/');
+    } else {
+      navigate(key);
+    }
+  };
 
   const menuItems = [
     {
@@ -45,7 +56,7 @@ export default function OwnerLayout() {
       label: 'Về trang chủ'
     },
     {
-      key: '/logout',
+      key: 'logout',
       icon: <LogoutOutlined />,
       label: 'Đăng xuất',
       danger: true
@@ -89,7 +100,7 @@ export default function OwnerLayout() {
           mode="inline"
           selectedKeys={[location.pathname]}
           items={menuItems}
-          onClick={({ key }) => navigate(key)}
+          onClick={({ key }) => handleMenuClick(key)}
           style={{
             background: 'transparent',
             border: 'none'

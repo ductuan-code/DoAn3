@@ -1,5 +1,5 @@
-import { Input, Card, Row, Col, Typography, Button, Select, DatePicker } from 'antd';
-import { SearchOutlined, EnvironmentOutlined, CalendarOutlined, FireOutlined } from '@ant-design/icons';
+import { Input, Card, Row, Col, Typography, Button, Select, DatePicker, Avatar } from 'antd';
+import { SearchOutlined, EnvironmentOutlined, CalendarOutlined, FireOutlined, ThunderboltOutlined, SafetyOutlined, CreditCardOutlined, CustomerServiceOutlined, CheckCircleOutlined, StarFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { mockFields } from '../data/mockData';
 
@@ -276,6 +276,383 @@ export default function HomePage() {
             </Col>
           ))}
         </Row>
+      </div>
+
+      {/* Features Section */}
+      <div style={{ 
+        background: 'linear-gradient(180deg, #f9fafb 0%, #ffffff 100%)',
+        padding: '80px 48px',
+        marginBottom: 60
+      }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 60 }}>
+            <Title level={2} style={{ fontSize: 36, fontWeight: 700, marginBottom: 12 }}>
+              Tại sao chọn FootballPro?
+            </Title>
+            <Text type="secondary" style={{ fontSize: 16 }}>
+              Trải nghiệm đặt sân hiện đại, nhanh chóng và tiện lợi
+            </Text>
+          </div>
+
+          <Row gutter={[32, 32]}>
+            <Col xs={24} sm={12} md={6}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 20,
+                  background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)'
+                }}>
+                  <ThunderboltOutlined style={{ fontSize: 36, color: 'white' }} />
+                </div>
+                <Title level={4} style={{ marginBottom: 12, fontSize: 18 }}>
+                  Đặt sân nhanh
+                </Title>
+                <Text type="secondary" style={{ fontSize: 14 }}>
+                  Chỉ 3 bước đơn giản, hoàn tất trong 2 phút
+                </Text>
+              </div>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 20,
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  boxShadow: '0 10px 30px rgba(59, 130, 246, 0.3)'
+                }}>
+                  <SafetyOutlined style={{ fontSize: 36, color: 'white' }} />
+                </div>
+                <Title level={4} style={{ marginBottom: 12, fontSize: 18 }}>
+                  An toàn & Bảo mật
+                </Title>
+                <Text type="secondary" style={{ fontSize: 14 }}>
+                  Thông tin được mã hóa và bảo vệ tuyệt đối
+                </Text>
+              </div>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 20,
+                  background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  boxShadow: '0 10px 30px rgba(245, 158, 11, 0.3)'
+                }}>
+                  <CreditCardOutlined style={{ fontSize: 36, color: 'white' }} />
+                </div>
+                <Title level={4} style={{ marginBottom: 12, fontSize: 18 }}>
+                  Thanh toán linh hoạt
+                </Title>
+                <Text type="secondary" style={{ fontSize: 14 }}>
+                  Hỗ trợ nhiều hình thức thanh toán tiện lợi
+                </Text>
+              </div>
+            </Col>
+
+            <Col xs={24} sm={12} md={6}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: 20,
+                  background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 20px',
+                  boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)'
+                }}>
+                  <CustomerServiceOutlined style={{ fontSize: 36, color: 'white' }} />
+                </div>
+                <Title level={4} style={{ marginBottom: 12, fontSize: 18 }}>
+                  Hỗ trợ 24/7
+                </Title>
+                <Text type="secondary" style={{ fontSize: 14 }}>
+                  Đội ngũ chăm sóc khách hàng luôn sẵn sàng
+                </Text>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+
+      {/* How It Works */}
+      <div style={{ padding: '60px 48px', maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 60 }}>
+          <Title level={2} style={{ fontSize: 36, fontWeight: 700, marginBottom: 12 }}>
+            Cách thức hoạt động
+          </Title>
+          <Text type="secondary" style={{ fontSize: 16 }}>
+            Đặt sân chỉ với 3 bước đơn giản
+          </Text>
+        </div>
+
+        <Row gutter={[48, 48]} align="middle">
+          <Col xs={24} md={8}>
+            <div style={{ textAlign: 'center', position: 'relative' }}>
+              <div style={{
+                width: 60,
+                height: 60,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+                fontSize: 28,
+                fontWeight: 800,
+                color: 'white',
+                boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+              }}>
+                1
+              </div>
+              <Title level={4} style={{ marginBottom: 12, fontSize: 20 }}>
+                Tìm kiếm sân
+              </Title>
+              <Text type="secondary" style={{ fontSize: 15 }}>
+                Chọn địa điểm, ngày giờ và loại sân phù hợp với bạn
+              </Text>
+            </div>
+          </Col>
+
+          <Col xs={24} md={8}>
+            <div style={{ textAlign: 'center', position: 'relative' }}>
+              <div style={{
+                width: 60,
+                height: 60,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+                fontSize: 28,
+                fontWeight: 800,
+                color: 'white',
+                boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+              }}>
+                2
+              </div>
+              <Title level={4} style={{ marginBottom: 12, fontSize: 20 }}>
+                Chọn khung giờ
+              </Title>
+              <Text type="secondary" style={{ fontSize: 15 }}>
+                Xem lịch trống và chọn khung giờ bạn muốn đặt
+              </Text>
+            </div>
+          </Col>
+
+          <Col xs={24} md={8}>
+            <div style={{ textAlign: 'center', position: 'relative' }}>
+              <div style={{
+                width: 60,
+                height: 60,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 24px',
+                fontSize: 28,
+                fontWeight: 800,
+                color: 'white',
+                boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+              }}>
+                3
+              </div>
+              <Title level={4} style={{ marginBottom: 12, fontSize: 20 }}>
+                Xác nhận & Thanh toán
+              </Title>
+              <Text type="secondary" style={{ fontSize: 15 }}>
+                Hoàn tất đặt sân và nhận xác nhận ngay lập tức
+              </Text>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Testimonials */}
+      <div style={{ 
+        background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+        padding: '80px 48px',
+        marginTop: 60
+      }}>
+        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 60 }}>
+            <Title level={2} style={{ fontSize: 36, fontWeight: 700, marginBottom: 12 }}>
+              Khách hàng nói gì về chúng tôi
+            </Title>
+            <Text type="secondary" style={{ fontSize: 16 }}>
+              Hơn 10,000 lượt đặt sân thành công
+            </Text>
+          </div>
+
+          <Row gutter={[24, 24]}>
+            <Col xs={24} md={8}>
+              <Card style={{ 
+                borderRadius: 16, 
+                border: 'none',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+              }}>
+                <div style={{ marginBottom: 16 }}>
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18 }} />
+                </div>
+                <Text style={{ fontSize: 15, lineHeight: 1.7, display: 'block', marginBottom: 20 }}>
+                  "Đặt sân cực kỳ nhanh và tiện lợi. Giao diện đẹp, dễ sử dụng. Tôi đã giới thiệu cho cả đội bóng của mình!"
+                </Text>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <Avatar size={48} style={{ background: '#10B981' }}>N</Avatar>
+                  <div>
+                    <div style={{ fontWeight: 600 }}>Nguyễn Văn A</div>
+                    <Text type="secondary" style={{ fontSize: 13 }}>Đội trưởng FC Saigon</Text>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+
+            <Col xs={24} md={8}>
+              <Card style={{ 
+                borderRadius: 16, 
+                border: 'none',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+              }}>
+                <div style={{ marginBottom: 16 }}>
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18 }} />
+                </div>
+                <Text style={{ fontSize: 15, lineHeight: 1.7, display: 'block', marginBottom: 20 }}>
+                  "Tìm được sân gần nhà với giá tốt. Hệ thống xác nhận nhanh, không lo bị trùng lịch. Rất hài lòng!"
+                </Text>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <Avatar size={48} style={{ background: '#3b82f6' }}>T</Avatar>
+                  <div>
+                    <div style={{ fontWeight: 600 }}>Trần Minh B</div>
+                    <Text type="secondary" style={{ fontSize: 13 }}>Thành viên thường xuyên</Text>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+
+            <Col xs={24} md={8}>
+              <Card style={{ 
+                borderRadius: 16, 
+                border: 'none',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+              }}>
+                <div style={{ marginBottom: 16 }}>
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18, marginRight: 4 }} />
+                  <StarFilled style={{ color: '#fbbf24', fontSize: 18 }} />
+                </div>
+                <Text style={{ fontSize: 15, lineHeight: 1.7, display: 'block', marginBottom: 20 }}>
+                  "App tuyệt vời! Quản lý lịch đặt sân rất dễ dàng. Hỗ trợ khách hàng nhiệt tình. Highly recommended!"
+                </Text>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <Avatar size={48} style={{ background: '#f59e0b' }}>L</Avatar>
+                  <div>
+                    <div style={{ fontWeight: 600 }}>Lê Thị C</div>
+                    <Text type="secondary" style={{ fontSize: 13 }}>Người dùng mới</Text>
+                  </div>
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div style={{ 
+        padding: '80px 48px',
+        maxWidth: 1200,
+        margin: '0 auto'
+      }}>
+        <Card style={{
+          background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+          borderRadius: 24,
+          border: 'none',
+          padding: '40px 20px',
+          textAlign: 'center'
+        }}>
+          <Title level={2} style={{ 
+            color: 'white', 
+            fontSize: 36, 
+            fontWeight: 700,
+            marginBottom: 16 
+          }}>
+            Sẵn sàng đặt sân ngay hôm nay?
+          </Title>
+          <Text style={{ 
+            color: 'rgba(255,255,255,0.95)', 
+            fontSize: 18,
+            display: 'block',
+            marginBottom: 32
+          }}>
+            Tham gia cùng hàng ngàn người chơi bóng đá đã tin dùng FootballPro
+          </Text>
+          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/fields">
+              <Button 
+                size="large"
+                style={{
+                  height: 56,
+                  padding: '0 40px',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  borderRadius: 12,
+                  background: 'white',
+                  color: '#10B981',
+                  border: 'none'
+                }}
+              >
+                Tìm sân ngay
+              </Button>
+            </Link>
+            <Link to="/register">
+              <Button 
+                size="large"
+                style={{
+                  height: 56,
+                  padding: '0 40px',
+                  fontSize: 16,
+                  fontWeight: 600,
+                  borderRadius: 12,
+                  background: 'transparent',
+                  color: 'white',
+                  border: '2px solid white'
+                }}
+              >
+                Đăng ký miễn phí
+              </Button>
+            </Link>
+          </div>
+        </Card>
       </div>
     </div>
   );
