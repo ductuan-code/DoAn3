@@ -13,7 +13,7 @@ const BookingContext = createContext<BookingContextType | undefined>(undefined);
 export function BookingProvider({ children }: { children: ReactNode }) {
   const [bookings, setBookings] = useState<Booking[]>([]);
 
-  // Load bookings từ localStorage
+  // Load bookings
   useEffect(() => {
     const savedBookings = localStorage.getItem('bookings');
     if (savedBookings) {
@@ -21,7 +21,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Save bookings vào localStorage mỗi khi thay đổi
+  // Save bookings
   useEffect(() => {
     localStorage.setItem('bookings', JSON.stringify(bookings));
   }, [bookings]);
