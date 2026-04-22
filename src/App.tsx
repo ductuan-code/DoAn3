@@ -11,6 +11,7 @@ import FieldDetailPage from './pages/FieldDetailPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import MyBookingsPage from './pages/MyBookingsPage';
+import ProfilePage from './pages/ProfilePage';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import ManageFields from './pages/admin/ManageFields';
 import ManageUsers from './pages/admin/ManageUsers';
@@ -36,6 +37,11 @@ function App() {
               <Route path="my-bookings" element={
                 <ProtectedRoute>
                   <MyBookingsPage />
+                </ProtectedRoute>
+              } />
+              <Route path="profile" element={
+                <ProtectedRoute>
+                  <ProfilePage />
                 </ProtectedRoute>
               } />
             </Route>

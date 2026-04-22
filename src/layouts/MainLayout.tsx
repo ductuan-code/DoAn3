@@ -30,6 +30,7 @@ export default function MainLayout() {
       key: 'profile',
       icon: <UserOutlined />,
       label: 'Thông tin cá nhân',
+      onClick: () => navigate('/profile')
     },
     {
       key: 'my-bookings',
