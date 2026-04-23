@@ -140,3 +140,110 @@ code {
   border: 2px solid #059669;
   box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Hero section mobile */
+  .hero-section {
+    padding: 60px 16px 100px !important;
+    margin-bottom: 40px !important;
+  }
+
+  /* Section headers mobile */
+  .section-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  /* Hide desktop menu on mobile */
+  .ant-menu-horizontal {
+    display: none !important;
+  }
+
+  /* Mobile header adjustments */
+  .ant-layout-header {
+    padding: 0 16px !important;
+  }
+
+  /* Content padding mobile */
+  .ant-layout-content {
+    padding: 24px 16px !important;
+  }
+
+  /* Card adjustments */
+  .ant-card-body {
+    padding: 16px !important;
+  }
+
+  /* Table responsive */
+  .ant-table {
+    font-size: 12px !important;
+  }
+
+  .ant-table-thead > tr > th,
+  .ant-table-tbody > tr > td {
+    padding: 8px !important;
+  }
+
+  /* Button sizes */
+  .ant-btn-lg {
+    height: 44px !important;
+    font-size: 15px !important;
+  }
+
+  /* Form items */
+  .ant-form-item {
+    margin-bottom: 16px !important;
+  }
+
+  /* Modal adjustments */
+  .ant-modal {
+    max-width: calc(100vw - 32px) !important;
+    margin: 16px auto !important;
+  }
+
+  /* Stats section */
+  .ant-statistic-title {
+    font-size: 12px !important;
+  }
+
+  .ant-statistic-content {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Extra small devices */
+  .ant-col {
+    padding: 0 8px !important;
+  }
+
+  /* Reduce spacing */
+  .ant-space {
+    gap: 8px !important;
+  }
+
+  /* Smaller badges */
+  .badge-hot,
+  .badge-discount {
+    font-size: 10px !important;
+    padding: 2px 8px !important;
+  }
+
+  /* Footer adjustments */
+  .ant-layout-footer {
+    padding: 16px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ant-layout-header {
+    padding: 0 24px !important;
+  }
+
+  .ant-layout-content {
+    padding: 24px !important;
+  }
+}
