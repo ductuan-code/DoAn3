@@ -85,19 +85,22 @@ export default function MainLayout() {
           top: 0,
           zIndex: 1000,
           width: '100%',
-          padding: '0 48px',
+          padding: '0 clamp(16px, 4vw, 48px)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-          borderBottom: '1px solid rgba(16, 185, 129, 0.1)'
+          borderBottom: '1px solid rgba(16, 185, 129, 0.1)',
+          height: 'auto',
+          lineHeight: 'normal'
         }}>
         {/* Logo */}
         <div 
           style={{ 
             display: 'flex', 
             alignItems: 'center',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            flex: '0 0 auto'
           }}
           onClick={() => navigate('/')}
         >
@@ -105,16 +108,17 @@ export default function MainLayout() {
             background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
             padding: '8px 12px',
             borderRadius: 12,
-            marginRight: 12
+            marginRight: 8
           }}>
-            <span style={{ fontSize: 20, fontWeight: 'bold' }}>⚽</span>
+            <span style={{ fontSize: 'clamp(16px, 3vw, 20px)', fontWeight: 'bold' }}>⚽</span>
           </div>
           <span style={{ 
-            fontSize: 20, 
+            fontSize: 'clamp(16px, 3vw, 20px)', 
             fontWeight: 'bold',
             background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
             WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
+            WebkitTextFillColor: 'transparent',
+            display: window.innerWidth < 400 ? 'none' : 'inline'
           }}>
             FootballPro
           </span>
@@ -136,10 +140,10 @@ export default function MainLayout() {
         />
 
         {/* Right Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(8px, 2vw, 16px)', flex: '0 0 auto' }}>
           {isAuthenticated && user ? (
             <>
-              <Badge count={3} size="small">
+              <Badge count={3} size="small" style={{ display: window.innerWidth < 576 ? 'none' : 'block' }}>
                 <Button 
                   type="text" 
                   icon={<BellOutlined style={{ fontSize: 18 }} />}
@@ -156,7 +160,7 @@ export default function MainLayout() {
                     alignItems: 'center',
                     gap: 8,
                     height: 40,
-                    padding: '0 16px',
+                    padding: '0 clamp(8px, 2vw, 16px)',
                     borderRadius: 12,
                     fontWeight: 500
                   }}
@@ -176,8 +180,8 @@ export default function MainLayout() {
                   }}>
                     {user.name.charAt(0).toUpperCase()}
                   </div>
-                  <div>
-                    <div>{user.name}</div>
+                  <div style={{ display: window.innerWidth < 576 ? 'none' : 'block' }}>
+                    <div style={{ fontSize: 'clamp(12px, 2vw, 14px)' }}>{user.name}</div>
                     {isAdmin && (
                       <div style={{ fontSize: 11, color: '#ef4444', fontWeight: 600 }}>
                         ADMIN
@@ -191,9 +195,11 @@ export default function MainLayout() {
             <>
               <Button 
                 onClick={() => navigate('/login')}
+                size={window.innerWidth < 576 ? 'middle' : 'large'}
                 style={{ 
                   borderRadius: 12,
-                  fontWeight: 500
+                  fontWeight: 500,
+                  fontSize: 'clamp(12px, 2vw, 14px)'
                 }}
               >
                 Đăng nhập
@@ -201,9 +207,12 @@ export default function MainLayout() {
               <Button 
                 type="primary" 
                 onClick={() => navigate('/register')}
+                size={window.innerWidth < 576 ? 'middle' : 'large'}
                 style={{ 
                   borderRadius: 12,
-                  fontWeight: 600
+                  fontWeight: 600,
+                  fontSize: 'clamp(12px, 2vw, 14px)',
+                  display: window.innerWidth < 400 ? 'none' : 'inline-block'
                 }}
               >
                 Đăng ký
@@ -213,7 +222,7 @@ export default function MainLayout() {
         </div>
       </Header>
 
-      <Content style={{ padding: '32px 48px', minHeight: 'calc(100vh - 134px)' }}>
+      <Content style={{ padding: 'clamp(24px, 4vw, 32px) clamp(16px, 4vw, 48px)', minHeight: 'calc(100vh - 134px)' }}>
         <Outlet />
       </Content>
 
@@ -221,7 +230,7 @@ export default function MainLayout() {
         textAlign: 'center',
         background: 'white',
         borderTop: '1px solid #e5e7eb',
-        padding: '24px 48px'
+        padding: 'clamp(16px, 3vw, 24px) clamp(16px, 4vw, 48px)'
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
           <div style={{ marginBottom: 16 }}>
