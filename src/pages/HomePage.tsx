@@ -9,7 +9,7 @@ export default function HomePage() {
   const featuredFields = mockFields.slice(0, 3);
 
   return (
-    <div style={{ margin: '-32px -48px 0' }}>
+    <div style={{ margin: '-32px -48px 0', overflowX: 'hidden' }}>
       {/* Hero Section với Floating Search Bar */}
       <div style={{ 
         background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
@@ -17,10 +17,12 @@ export default function HomePage() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundBlendMode: 'overlay',
-        padding: '120px 48px 160px',
+        padding: '80px 24px 120px',
         position: 'relative',
-        marginBottom: 80
-      }}>
+        marginBottom: 60
+      }}
+      className="hero-section"
+      >
         {/* Overlay */}
         <div style={{
           position: 'absolute',
@@ -40,22 +42,25 @@ export default function HomePage() {
           margin: '0 auto',
           textAlign: 'center'
         }}>
-          <Title style={{ 
-            color: 'white', 
-            fontSize: 56,
-            fontWeight: 800,
-            marginBottom: 16,
-            textShadow: '0 4px 12px rgba(0,0,0,0.2)',
-            letterSpacing: '-1px'
-          }}>
+          <Title 
+            level={1}
+            style={{ 
+              color: 'white', 
+              fontSize: 'clamp(28px, 6vw, 56px)',
+              fontWeight: 800,
+              marginBottom: 16,
+              textShadow: '0 4px 12px rgba(0,0,0,0.2)',
+              letterSpacing: '-1px'
+            }}
+          >
             Đặt sân bóng nhanh chóng & dễ dàng
           </Title>
           
           <Text style={{ 
             color: 'rgba(255,255,255,0.95)', 
-            fontSize: 18,
+            fontSize: 'clamp(14px, 2vw, 18px)',
             display: 'block',
-            marginBottom: 48
+            marginBottom: 32
           }}>
             Tìm sân, chọn giờ và thanh toán trong vài phút. Trải nghiệm đặt sân thông minh.
           </Text>
@@ -148,42 +153,44 @@ export default function HomePage() {
           </Card>
 
           {/* Stats */}
-          <Row gutter={[48, 16]} style={{ marginTop: 60 }}>
+          <Row gutter={[24, 16]} style={{ marginTop: 40 }}>
             <Col xs={8}>
-              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 42, fontWeight: 800 }}>
+              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 'clamp(24px, 5vw, 42px)', fontWeight: 800 }}>
                 500+
               </Title>
-              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 15 }}>Sân bóng</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 'clamp(12px, 2vw, 15px)' }}>Sân bóng</Text>
             </Col>
             <Col xs={8}>
-              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 42, fontWeight: 800 }}>
+              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 'clamp(24px, 5vw, 42px)', fontWeight: 800 }}>
                 10K+
               </Title>
-              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 15 }}>Lượt đặt</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 'clamp(12px, 2vw, 15px)' }}>Lượt đặt</Text>
             </Col>
             <Col xs={8}>
-              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 42, fontWeight: 800 }}>
+              <Title level={2} style={{ color: 'white', margin: 0, fontSize: 'clamp(24px, 5vw, 42px)', fontWeight: 800 }}>
                 63
               </Title>
-              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 15 }}>Tỉnh thành</Text>
+              <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 'clamp(12px, 2vw, 15px)' }}>Tỉnh thành</Text>
             </Col>
           </Row>
         </div>
       </div>
 
       {/* Featured Fields */}
-      <div style={{ padding: '0 48px 60px', maxWidth: 1200, margin: '0 auto' }}>
+      <div style={{ padding: '0 24px 40px', maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ 
           display: 'flex', 
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          marginBottom: 32 
-        }}>
+          flexDirection: 'column',
+          gap: 12,
+          marginBottom: 24 
+        }}
+        className="section-header"
+        >
           <div>
-            <Title level={2} style={{ margin: 0, fontSize: 32, fontWeight: 700 }}>
+            <Title level={2} style={{ margin: 0, fontSize: 'clamp(24px, 4vw, 32px)', fontWeight: 700 }}>
               Sân nổi bật
             </Title>
-            <Text type="secondary" style={{ fontSize: 15 }}>
+            <Text type="secondary" style={{ fontSize: 'clamp(13px, 2vw, 15px)' }}>
               Những sân được đặt nhiều nhất tuần này
             </Text>
           </div>
@@ -193,7 +200,8 @@ export default function HomePage() {
               style={{ 
                 color: '#10B981', 
                 fontWeight: 600,
-                fontSize: 15
+                fontSize: 15,
+                padding: 0
               }}
             >
               Xem tất cả →
@@ -201,9 +209,9 @@ export default function HomePage() {
           </Link>
         </div>
 
-        <Row gutter={[24, 24]}>
+        <Row gutter={[16, 16]}>
           {featuredFields.map((field, index) => (
-            <Col xs={24} sm={12} md={8} key={field.id}>
+            <Col xs={24} sm={12} lg={8} key={field.id}>
               <Link to={`/fields/${field.id}`}>
                 <Card
                   hoverable
@@ -281,45 +289,44 @@ export default function HomePage() {
       {/* Features Section */}
       <div style={{ 
         background: 'linear-gradient(180deg, #f9fafb 0%, #ffffff 100%)',
-        padding: '80px 48px',
-        marginBottom: 60
+        padding: '60px 24px'
       }}>
         <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 60 }}>
-            <Title level={2} style={{ fontSize: 36, fontWeight: 700, marginBottom: 12 }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <Title level={2} style={{ fontSize: 'clamp(24px, 4vw, 36px)', fontWeight: 700, marginBottom: 12 }}>
               Tại sao chọn FootballPro?
             </Title>
-            <Text type="secondary" style={{ fontSize: 16 }}>
+            <Text type="secondary" style={{ fontSize: 'clamp(14px, 2vw, 16px)' }}>
               Trải nghiệm đặt sân hiện đại, nhanh chóng và tiện lợi
             </Text>
           </div>
 
-          <Row gutter={[32, 32]}>
-            <Col xs={24} sm={12} md={6}>
+          <Row gutter={[24, 24]}>
+            <Col xs={12} sm={12} md={6}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: 20,
+                  width: 'clamp(60px, 15vw, 80px)',
+                  height: 'clamp(60px, 15vw, 80px)',
+                  borderRadius: 16,
                   background: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 20px',
+                  margin: '0 auto 16px',
                   boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)'
                 }}>
-                  <ThunderboltOutlined style={{ fontSize: 36, color: 'white' }} />
+                  <ThunderboltOutlined style={{ fontSize: 'clamp(24px, 5vw, 36px)', color: 'white' }} />
                 </div>
-                <Title level={4} style={{ marginBottom: 12, fontSize: 18 }}>
+                <Title level={4} style={{ marginBottom: 8, fontSize: 'clamp(14px, 2.5vw, 18px)' }}>
                   Đặt sân nhanh
                 </Title>
-                <Text type="secondary" style={{ fontSize: 14 }}>
+                <Text type="secondary" style={{ fontSize: 'clamp(12px, 2vw, 14px)' }}>
                   Chỉ 3 bước đơn giản, hoàn tất trong 2 phút
                 </Text>
               </div>
             </Col>
 
-            <Col xs={24} sm={12} md={6}>
+            <Col xs={12} sm={12} md={6}>
               <div style={{ textAlign: 'center' }}>
                 <div style={{
                   width: 80,
