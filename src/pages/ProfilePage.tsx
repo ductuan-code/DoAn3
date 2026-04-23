@@ -41,14 +41,14 @@ export default function ProfilePage() {
   }
 
   return (
-    <div style={{ maxWidth: 1000, margin: '0 auto', padding: '24px' }}>
-      <Title level={2} style={{ marginBottom: 24 }}>
+    <div style={{ maxWidth: 1000, margin: '0 auto', padding: 'clamp(16px, 3vw, 24px)' }}>
+      <Title level={2} style={{ marginBottom: 24, fontSize: 'clamp(20px, 4vw, 28px)' }}>
         Thông tin cá nhân
       </Title>
 
-      <Row gutter={[24, 24]}>
+      <Row gutter={[16, 16]}>
         {/* Left Column - Avatar & Basic Info */}
-        <Col xs={24} md={8}>
+        <Col xs={24} lg={8}>
           <Card style={{ textAlign: 'center' }}>
             <Avatar 
               size={120} 
@@ -96,7 +96,7 @@ export default function ProfilePage() {
         </Col>
 
         {/* Right Column - Tabs */}
-        <Col xs={24} md={16}>
+        <Col xs={24} lg={16}>
           <Card>
             <Tabs defaultActiveKey="1">
               <TabPane tab="Thông tin chung" key="1">
