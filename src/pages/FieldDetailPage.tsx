@@ -17,6 +17,7 @@ export default function FieldDetailPage() {
   const { user, isAuthenticated } = useAuth();
   const { bookings, addBooking } = useBooking();
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]); // Today's date
   
   // Custom hook quản lý booking selection
   const {
@@ -59,31 +60,22 @@ export default function FieldDetailPage() {
   };
 
   // Xác nhận booking
-  const handleConfirmBooking = () => {
+  const handleConfirmBooking = async () => {
     if (!user) return;
 
-    // Tạo booking cho từng slot
-    selectedSlots.forEach(slot => {
-      const newBooking: Booking = {
-        id: 'booking-' + Date.now() + '-' + slot.id,
-        userId: user.id,
-        fieldId: field.id,
-        timeSlotId: slot.id,
-        date: slot.date,
-        startTime: slot.startTime,
-        endTime: slot.endTime,
-        totalPrice: slot.price,
-        status: 'confirmed',
-        createdAt: new Date().toISOString(),
-        fieldName: field.name
-      };
-      
-      addBooking(newBooking);
-    });
-
-    // Reset state
-    clearSelection();
-    setModalVisible(false);
+    const bookingData = {
+      fieldId: parseInt(field.id),
+      bookingDate: selectedDate,
+      startTime: selectedSlots[0].startTime,
+      endTime: selectedSlots[selectedSlots.length - 1].endTime,
+      note: 'Đặt sân từ website'
+    };
+    
+    const success = await addBooking(bookingData);
+    if (success) {
+      clearSelection();
+      setModalVisible(false);
+    }
   };
 
   const handleCloseModal = () => {

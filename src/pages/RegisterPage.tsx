@@ -1,15 +1,27 @@
-import { Form, Input, Button, Typography, Divider, Checkbox } from 'antd';
+import { Form, Input, Button, Typography, Divider, Checkbox, Spin } from 'antd';
 import { UserOutlined, LockOutlined, PhoneOutlined, MailOutlined, GoogleOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 const { Title, Text } = Typography;
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const { register, loading } = useAuth();
+  const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
-    console.log('Register:', values);
-    navigate('/login');
+  const onFinish = async (values: any) => {
+    const success = await register({
+      fullName: values.name,
+      email: values.email,
+      phone: values.phone,
+      password: values.password,
+      role: 'USER'
+    });
+    
+    if (success) {
+      navigate('/login');
+    }
   };
 
   return (
@@ -144,12 +156,14 @@ export default function RegisterPage() {
           <Title level={2} style={{ marginBottom: 8 }}>Đăng ký</Title>
           <Text type="secondary">Tạo tài khoản mới để bắt đầu.</Text>
 
-          <Form
-            name="register"
-            onFinish={onFinish}
-            layout="vertical"
-            style={{ marginTop: 32 }}
-          >
+          <Spin spinning={loading}>
+            <Form
+              form={form}
+              name="register"
+              onFinish={onFinish}
+              layout="vertical"
+              style={{ marginTop: 32 }}
+            >
             <Form.Item
               label="Họ và tên"
               name="name"
@@ -251,6 +265,7 @@ export default function RegisterPage() {
                 htmlType="submit" 
                 block 
                 size="large"
+                loading={loading}
                 style={{ 
                   background: '#16a34a',
                   borderColor: '#16a34a',
@@ -291,6 +306,7 @@ export default function RegisterPage() {
               </Text>
             </div>
           </Form>
+        </Spin>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Form, Input, Button, Typography, Divider, Checkbox } from 'antd';
+import { Form, Input, Button, Typography, Divider, Checkbox, Spin } from 'antd';
 import { UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,11 +7,14 @@ const { Title, Text } = Typography;
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
+  const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
-    login(values.email, values.password);
-    navigate('/');
+  const onFinish = async (values: any) => {
+    const success = await login(values.email, values.password);
+    if (success) {
+      navigate('/');
+    }
   };
 
   return (
@@ -147,94 +150,98 @@ export default function LoginPage() {
           <Title level={2} style={{ marginBottom: 8 }}>Đăng nhập</Title>
           <Text type="secondary">Chào mừng bạn trở lại! Vui lòng đăng nhập.</Text>
 
-          <Form
-            name="login"
-            onFinish={onFinish}
-            layout="vertical"
-            style={{ marginTop: 32 }}
-          >
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                { required: true, message: 'Vui lòng nhập email!' },
-                { type: 'email', message: 'Email không hợp lệ!' }
-              ]}
+          <Spin spinning={loading}>
+            <Form
+              form={form}
+              name="login"
+              onFinish={onFinish}
+              layout="vertical"
+              style={{ marginTop: 32 }}
             >
-              <Input 
-                prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
-                placeholder="Nhập email của bạn"
-                size="large"
-              />
-            </Form.Item>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  { required: true, message: 'Vui lòng nhập email!' },
+                  { type: 'email', message: 'Email không hợp lệ!' }
+                ]}
+              >
+                <Input 
+                  prefix={<UserOutlined style={{ color: '#bfbfbf' }} />}
+                  placeholder="Nhập email của bạn"
+                  size="large"
+                />
+              </Form.Item>
 
-            <Form.Item
-              label="Mật khẩu"
-              name="password"
-              rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
-            >
-              <Input.Password
-                prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
-                placeholder="Nhập mật khẩu"
-                size="large"
-              />
-            </Form.Item>
+              <Form.Item
+                label="Mật khẩu"
+                name="password"
+                rules={[{ required: true, message: 'Vui lòng nhập mật khẩu!' }]}
+              >
+                <Input.Password
+                  prefix={<LockOutlined style={{ color: '#bfbfbf' }} />}
+                  placeholder="Nhập mật khẩu"
+                  size="large"
+                />
+              </Form.Item>
 
-            <div style={{ 
-              display: 'flex', 
-              justifyContent: 'space-between',
-              marginBottom: 24 
-            }}>
-              <Checkbox>Ghi nhớ đăng nhập</Checkbox>
-              <a href="#" style={{ color: '#16a34a' }}>Quên mật khẩu?</a>
-            </div>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between',
+                marginBottom: 24 
+              }}>
+                <Checkbox>Ghi nhớ đăng nhập</Checkbox>
+                <a href="#" style={{ color: '#16a34a' }}>Quên mật khẩu?</a>
+              </div>
 
-            <Form.Item>
+              <Form.Item>
+                <Button 
+                  type="primary" 
+                  htmlType="submit" 
+                  block 
+                  size="large"
+                  loading={loading}
+                  style={{ 
+                    background: '#16a34a',
+                    borderColor: '#16a34a',
+                    height: 48,
+                    fontSize: 16,
+                    fontWeight: 'bold'
+                  }}
+                >
+                  Đăng nhập →
+                </Button>
+              </Form.Item>
+
+              <Divider plain style={{ margin: '24px 0' }}>
+                <Text type="secondary" style={{ fontSize: 13 }}>Hoặc</Text>
+              </Divider>
+
               <Button 
-                type="primary" 
-                htmlType="submit" 
                 block 
                 size="large"
+                icon={<GoogleOutlined />}
                 style={{ 
-                  background: '#16a34a',
-                  borderColor: '#16a34a',
                   height: 48,
-                  fontSize: 16,
-                  fontWeight: 'bold'
+                  fontSize: 15,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
               >
-                Đăng nhập →
+                Đăng nhập bằng Google
               </Button>
-            </Form.Item>
 
-            <Divider plain style={{ margin: '24px 0' }}>
-              <Text type="secondary" style={{ fontSize: 13 }}>Hoặc</Text>
-            </Divider>
-
-            <Button 
-              block 
-              size="large"
-              icon={<GoogleOutlined />}
-              style={{ 
-                height: 48,
-                fontSize: 15,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              Đăng nhập bằng Google
-            </Button>
-
-            <div style={{ textAlign: 'center', marginTop: 24 }}>
-              <Text type="secondary">
-                Chưa có tài khoản?{' '}
-                <Link to="/register" style={{ color: '#16a34a', fontWeight: 'bold' }}>
-                  Đăng ký ngay
-                </Link>
-              </Text>
-            </div>
-          </Form>
+              <div style={{ textAlign: 'center', marginTop: 24 }}>
+                <Text type="secondary">
+                  Chưa có tài khoản?{' '}
+                  <Link to="/register" style={{ color: '#16a34a', fontWeight: 'bold' }}>
+                    Đăng ký ngay
+                  </Link>
+                </Text>
+              </div>
+            </Form>
+          </Spin>
         </div>
       </div>
     </div>
