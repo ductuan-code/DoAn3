@@ -104,7 +104,11 @@ export const bookingsAPI = {
     endTime: string;
     note?: string;
   }) => {
-    const response = await api.post('/bookings', bookingData);
+    const { bookingDate, ...rest } = bookingData;
+    const response = await api.post('/bookings', {
+      ...rest,
+      date: bookingDate,
+    });
     return response.data;
   },
 
@@ -166,7 +170,11 @@ export const ownerAPI = {
     endTime: string;
     reason: string;
   }) => {
-    const response = await api.post('/owner/block-slot', blockData);
+    const { blockDate, ...rest } = blockData;
+    const response = await api.post('/owner/block-slot', {
+      ...rest,
+      date: blockDate,
+    });
     return response.data;
   },
 };
@@ -185,6 +193,11 @@ export const adminAPI = {
 
   getAllFields: async (page?: number) => {
     const response = await api.get('/admin/fields', { params: { page } });
+    return response.data;
+  },
+
+  getAllBookings: async (page?: number) => {
+    const response = await api.get('/admin/bookings', { params: { page } });
     return response.data;
   },
 
